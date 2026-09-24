@@ -13,9 +13,9 @@ app.use(express.json());
 // Auth Routes
 app.use("/api/auth", authRoutes);
 
-// Auth Route Test
-app.get("/api/auth/test", (req, res) => {
-  res.json({ message: "Auth route is working!" });
+// Server Test
+app.get("/test", (req, res) => {
+  res.json({ message: "Server test is working!" });
 });
 
 // Home Route
