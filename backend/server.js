@@ -13,10 +13,17 @@ app.use(express.json());
 // Auth Routes
 app.use("/api/auth", authRoutes);
 
+// Auth Route Test
+app.get("/api/auth/test", (req, res) => {
+  res.json({ message: "Auth route is working!" });
+});
+
+// Home Route
 app.get("/", (req, res) => {
   res.send("Cricket Shop Backend is Running!");
 });
 
+// MongoDB Connection
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
