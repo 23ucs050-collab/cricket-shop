@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 function Cart({ cart, removeFromCart }) {
   const total = cart.reduce((sum, item) => sum + item.price, 0);
 
-  // Logged-in user (Razorpay popup-la name, email auto-fill aaga)
+  // Logged-in user
+  // Razorpay popup-la name, email auto-fill aaga
   const getUser = () => {
     try {
       return JSON.parse(localStorage.getItem("customerUser")) || {};
@@ -22,16 +23,19 @@ function Cart({ cart, removeFromCart }) {
 
       script.onload = async () => {
         try {
-          // Create order from backend
-          const response = await fetch("/api/payment/create-order", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              amount: total,
-            }),
-          });
+          // Create order from Render backend
+          const response = await fetch(
+            "https://cricket-shop-pgig.onrender.com/api/payment/create-order",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                amount: total,
+              }),
+            }
+          );
 
           const data = await response.json();
 
@@ -53,14 +57,17 @@ function Cart({ cart, removeFromCart }) {
 
             handler: async function (paymentResponse) {
               try {
-                // Verify payment with backend
-                const verifyResponse = await fetch("/api/payment/verify", {
-                  method: "POST",
-                  headers: {
-                    "Content-Type": "application/json",
-                  },
-                  body: JSON.stringify(paymentResponse),
-                });
+                // Verify payment with Render backend
+                const verifyResponse = await fetch(
+                  "https://cricket-shop-pgig.onrender.com/api/payment/verify",
+                  {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(paymentResponse),
+                  }
+                );
 
                 const verifyData = await verifyResponse.json();
 
@@ -135,7 +142,9 @@ function Cart({ cart, removeFromCart }) {
 
             <p>₹{item.price}</p>
 
-            <button onClick={() => removeFromCart(item.id)}>Remove</button>
+            <button onClick={() => removeFromCart(item.id)}>
+              Remove
+            </button>
           </div>
         </div>
       ))}
