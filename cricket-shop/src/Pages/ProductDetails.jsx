@@ -17,10 +17,13 @@ function ProductDetails({ addToCart }) {
 
     <div className="product-details">
 
-      <img
-        src={product.image}
-        alt={product.name}
-      />
+      <div className="product-image-container">
+  <img
+    src={product.image}
+    alt={product.name}
+    className="rotate-product"
+  />
+</div>
 
       <div>
 

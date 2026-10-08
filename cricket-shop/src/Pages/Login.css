@@ -1,0 +1,138 @@
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f9a05f;
+  overflow: hidden;
+}
+
+.stage {
+  display: flex;
+  align-items: flex-end;
+  gap: 24px;
+}
+
+/* ---------- Character ---------- */
+.walker {
+  position: relative;
+  font-size: 90px;
+  line-height: 1;
+  animation: walkIn 2.5s ease-out both;
+}
+
+@keyframes walkIn {
+  from { transform: translateX(-70vw); }
+  to   { transform: translateX(0); }
+}
+
+.walker-body {
+  display: inline-block;
+  /* 2.4s nadakkum bodhu bob, apparam dance */
+  animation: bob 0.4s ease-in-out 6, dance 1.2s ease-in-out 2.5s infinite;
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50%      { transform: translateY(-10px) rotate(3deg); }
+}
+
+@keyframes dance {
+  0%, 100% { transform: translateY(0) rotate(-8deg); }
+  50%      { transform: translateY(-14px) rotate(8deg); }
+}
+
+/* Character thappa direction paartha, idha scaleX(1) nu maathunga */
+.person {
+  display: inline-block;
+  transform: scaleX(-1);
+}
+
+.bat {
+  display: inline-block;
+  font-size: 50px;
+  margin-left: -6px;
+}
+
+.shadow {
+  width: 70px;
+  height: 10px;
+  margin: 4px auto 0;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  filter: blur(3px);
+}
+
+/* ---------- Login card ---------- */
+.login-box {
+  background: #fff;
+  padding: 36px 30px;
+  border-radius: 16px;
+  width: 340px;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  animation: cardIn 0.8s ease-out 2.4s forwards;
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(40px) scale(0.95); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.login-box input {
+  width: 100%;
+  padding: 12px 14px;
+  margin: 10px 0;
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: 16px;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.login-box input:focus {
+  border-color: #f97316;
+  box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.2);
+}
+
+.login-box button {
+  width: 100%;
+  padding: 13px;
+  margin-top: 14px;
+  background: #ef4444;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 17px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.3s;
+}
+
+.login-box button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(239, 68, 68, 0.4);
+}
+
+.login-box button:active {
+  transform: scale(0.97);
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 700px) {
+  .stage {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .walker {
+    font-size: 64px;
+  }
+
+  .login-box {
+    width: 88vw;
+    max-width: 360px;
+  }
+}

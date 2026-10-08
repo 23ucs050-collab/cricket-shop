@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import "./Login.css";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -16,19 +16,11 @@ function Login() {
     }
 
     try {
-      const response = await fetch(
-        "https://cricket-shop-pqig.onrender.com/api/auth/login",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email,
-            password,
-          }),
-        }
-      );
+      const response = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
 
       const data = await response.json();
 
@@ -37,12 +29,10 @@ function Login() {
         return;
       }
 
-      // Login successful
       localStorage.setItem("isLoggedIn", "true");
       localStorage.setItem("customerUser", JSON.stringify(data.user));
 
       alert("Login successful!");
-
       navigate("/");
     } catch (error) {
       console.error(error);
@@ -52,36 +42,41 @@ function Login() {
 
   return (
     <div className="login-page">
-      <div className="login-box">
-        <h1>🏏 Cricket Shop</h1>
-        <h2>Login</h2>
+      <div className="stage">
+        {/* Walking character */}
+        <div className="walker">
+          <div className="walker-body">
+            <span className="person">🚶</span>
+            <span className="bat">🏏</span>
+          </div>
+          <div className="shadow"></div>
+        </div>
 
-        <form onSubmit={handleLogin}>
-          <input
-            type="email"
-            placeholder="Customer ID / Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+        {/* Login card */}
+        <div className="login-box">
+          <h1>🏏 Cricket Shop</h1>
+          <h2>Login</h2>
 
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <form onSubmit={handleLogin}>
+            <input
+              type="email"
+              placeholder="Customer ID / Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button type="submit">Login</button>
+          </form>
 
-          <button type="submit">
-            Login
-          </button>
-        </form>
-
-        <p>
-          Don't have an account?{" "}
-          <Link to="/register">
-            Register
-          </Link>
-        </p>
+          <p>
+            Don't have an account? <Link to="/register">Register</Link>
+          </p>
+        </div>
       </div>
     </div>
   );
