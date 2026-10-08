@@ -1,0 +1,12 @@
+   {
+     "rewrites": [
+       {
+         "source": "/api/:path*",
+         "destination": "https://cricket-shop-pqig.onrender.com/api/:path*"
+       },
+       {
+         "source": "/(.*)",
+         "destination": "/index.html"
+       }
+     ]
+   }
