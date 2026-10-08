@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 
+const API = import.meta.env.VITE_API_URL || "";
+
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -16,16 +18,24 @@ function Login() {
     }
 
     try {
-      const response = await fetch("/api/auth/login", {
+      const response = await fetch(`${API}/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
 
-      const data = await response.json();
+      const text = await response.text();
+      let data;
+      try {
+        data = JSON.parse(text);
+      } catch {
+        console.error("Server returned non-JSON:", text);
+        alert("Server error: backend URL / deployment check pannunga");
+        return;
+      }
 
       if (!response.ok) {
-        alert(data.message);
+        alert(data.message || "Login failed");
         return;
       }
 
@@ -43,7 +53,6 @@ function Login() {
   return (
     <div className="login-page">
       <div className="stage">
-        {/* Walking character */}
         <div className="walker">
           <div className="walker-body">
             <span className="person">🚶</span>
@@ -52,7 +61,6 @@ function Login() {
           <div className="shadow"></div>
         </div>
 
-        {/* Login card */}
         <div className="login-box">
           <h1>🏏 Cricket Shop</h1>
           <h2>Login</h2>

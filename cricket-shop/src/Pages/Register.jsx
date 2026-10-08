@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
+const API = import.meta.env.VITE_API_URL || "";
+
 function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -23,28 +25,28 @@ function Register() {
     }
 
     try {
-      const response = await fetch("/api/auth/register", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name,
-            email,
-            password,
-          }),
-        }
-      );
+      const response = await fetch(`${API}/api/auth/register`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, password }),
+      });
 
-      const data = await response.json();
+      const text = await response.text();
+      let data;
+      try {
+        data = JSON.parse(text);
+      } catch {
+        console.error("Server returned non-JSON:", text);
+        alert("Server error: backend URL / deployment check pannunga");
+        return;
+      }
 
       if (!response.ok) {
-        alert(data.message);
+        alert(data.message || "Registration failed");
         return;
       }
 
       alert("Registration successful!");
-
       navigate("/login");
     } catch (error) {
       console.error(error);
@@ -55,56 +57,40 @@ function Register() {
   return (
     <div className="register-page">
       <div className="register-box">
-
         <h1>🏏 Cricket Shop</h1>
-
         <h2>Create Account</h2>
 
         <form onSubmit={handleRegister}>
-
           <input
             type="text"
             placeholder="Customer Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
-
           <input
             type="email"
             placeholder="Customer ID / Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-
           <input
             type="password"
             placeholder="Create Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-
           <input
             type="password"
             placeholder="Confirm Password"
             value={confirmPassword}
-            onChange={(e) =>
-              setConfirmPassword(e.target.value)
-            }
+            onChange={(e) => setConfirmPassword(e.target.value)}
           />
-
-          <button type="submit">
-            Register
-          </button>
-
+          <button type="submit">Register</button>
         </form>
 
         <p>
-          Already have an account?{" "}
-          <Link to="/login">
-            Login
-          </Link>
+          Already have an account? <Link to="/login">Login</Link>
         </p>
-
       </div>
     </div>
   );
