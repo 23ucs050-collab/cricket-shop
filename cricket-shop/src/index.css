@@ -549,3 +549,13 @@ img {
     grid-template-columns: 1fr;
   }
 }
+
+
+.home-page .hero {
+  background: radial-gradient(
+    circle at center,
+    #16a34a 0%,
+    #087443 50%,
+    #052e16 100%
+  ) !important;
+}

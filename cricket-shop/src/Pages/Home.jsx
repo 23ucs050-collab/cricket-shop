@@ -1,44 +1,21 @@
-import { Link } from "react-router-dom";
+import Navbar from "../components/Navbar";
 
 function Home() {
-
   return (
-
-    <div>
-
+    <div className="home-page">
+      <Navbar />
       <section className="hero">
-
-        <div>
-
-          <h1>
-            Play Like a Champion
-          </h1>
-
-          <p>
-            Premium cricket equipment for every player.
-          </p>
-
-          <Link to="/products">
-            Shop Now
-          </Link>
-
+        <div className="hero-content">
+          <h1>Play Like a Champion</h1>
+          <p>Premium cricket equipment for every player.</p>
+          <a href="/products" className="shop-now-btn">Shop Now</a>
         </div>
-
       </section>
-
       <section className="home-info">
-
         <h2>Welcome to Cricket Shop 🏏</h2>
-
-        <p>
-          Find cricket bats, gloves, helmets,
-          pads, shoes and more.
-        </p>
-
+        <p>Find cricket bats, gloves, helmets, pads, shoes and more.</p>
       </section>
-
     </div>
-
   );
 }
 
