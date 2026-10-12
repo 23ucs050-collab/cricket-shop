@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 
@@ -7,7 +7,16 @@ const API = import.meta.env.VITE_API_URL || "";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [welcomeName, setWelcomeName] = useState("");
   const navigate = useNavigate();
+
+  // Animation mudinjadhum Home page-ku po
+  useEffect(() => {
+    if (!welcomeName) return;
+
+    const timer = setTimeout(() => navigate("/"), 2600);
+    return () => clearTimeout(timer);
+  }, [welcomeName, navigate]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -42,8 +51,8 @@ function Login() {
       localStorage.setItem("isLoggedIn", "true");
       localStorage.setItem("customerUser", JSON.stringify(data.user));
 
-      alert("Login successful!");
-      navigate("/");
+      // alert-ku badhula animation start pannu
+      setWelcomeName(data.user?.name || "Player");
     } catch (error) {
       console.error(error);
       alert("Unable to connect to backend");
@@ -52,7 +61,25 @@ function Login() {
 
   return (
     <div className="login-page">
-      <div className="stage">
+      {/* Login success animation */}
+      {welcomeName && (
+        <div className="welcome-overlay">
+          <div className="ball-x">
+            <div className="ball-y">
+              <div className="ball"></div>
+            </div>
+          </div>
+
+          <h1 className="six-text">SIX! 🏏</h1>
+          <h2 className="welcome-text">Welcome, {welcomeName}!</h2>
+
+          <div className="loader">
+            <div className="loader-fill"></div>
+          </div>
+        </div>
+      )}
+
+      <div className={`stage ${welcomeName ? "leaving" : ""}`}>
         <div className="walker">
           <div className="walker-body">
             <span className="person">🚶</span>
