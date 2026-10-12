@@ -219,3 +219,9 @@
     padding: 30px 16px;
   }
 }
+
+
+.home-page .home-info {
+  background: transparent !important;
+  color: white !important;
+}

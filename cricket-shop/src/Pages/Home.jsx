@@ -1,9 +1,6 @@
-import Navbar from "../components/Navbar";
-
 function Home() {
   return (
     <div className="home-page">
-      <Navbar />
       <section className="hero">
         <div className="hero-content">
           <h1>Play Like a Champion</h1>
