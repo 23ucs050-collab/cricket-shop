@@ -23,34 +23,39 @@
   gap: 12px;
 }
 
-/* Home, Products, Cart, Login, Logout - ellaam button style */
+/* NAVBAR BUTTONS - Home, Products, Cart, Login, Logout
+   class peru enna irundhaalum .navbar kulla irukkura ellaathukkum apply aagum */
+.navbar a,
+.navbar button,
 .nav-links a,
 .logout-btn {
   display: inline-block;
-  color: white;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  padding: 8px 16px;
-  border-radius: 6px;
+  color: white !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.6) !important;
+  padding: 8px 16px !important;
+  border-radius: 6px !important;
   font-size: 15px;
   font-family: inherit;
-  text-decoration: none;
+  text-decoration: none !important;
   white-space: nowrap;
   cursor: pointer;
   transition: background 0.25s, color 0.25s, transform 0.25s;
 }
 
+.navbar a:hover,
+.navbar button:hover,
 .nav-links a:hover,
 .logout-btn:hover {
-  background: white;
-  color: #087443;
+  background: white !important;
+  color: #087443 !important;
   transform: translateY(-2px);
 }
 
 /* ippo irukkura page highlight (NavLink use panna) */
-.nav-links a.active {
-  background: white;
-  color: #087443;
+.navbar a.active {
+  background: white !important;
+  color: #087443 !important;
   font-weight: 600;
 }
 
@@ -78,10 +83,12 @@
     box-sizing: border-box;
   }
 
+  .navbar a,
+  .navbar button,
   .nav-links a,
   .logout-btn {
     font-size: 12px;
-    padding: 6px 8px;
+    padding: 6px 8px !important;
     margin: 0;
     white-space: nowrap;
   }
@@ -234,14 +241,4 @@
   .home-info {
     padding: 30px 16px;
   }
-}
-
-
-.navbar .nav-links a,
-.navbar .logout-btn {
-  background: rgba(255, 255, 255, 0.1) !important;
-  border: 1px solid rgba(255, 255, 255, 0.6) !important;
-  padding: 8px 16px !important;
-  border-radius: 6px !important;
-  color: white !important;
 }
