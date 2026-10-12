@@ -20,23 +20,38 @@
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 25px;
+  gap: 12px;
 }
 
-.nav-links a {
+/* Home, Products, Cart, Login, Logout - ellaam button style */
+.nav-links a,
+.logout-btn {
+  display: inline-block;
   color: white;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 15px;
+  font-family: inherit;
   text-decoration: none;
   white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s, transform 0.25s;
 }
 
-.logout-btn {
-  background: transparent;
-  color: white;
-  border: 1px solid white;
-  padding: 8px 14px;
-  border-radius: 5px;
-  cursor: pointer;
-  white-space: nowrap;
+.nav-links a:hover,
+.logout-btn:hover {
+  background: white;
+  color: #087443;
+  transform: translateY(-2px);
+}
+
+/* ippo irukkura page highlight (NavLink use panna) */
+.nav-links a.active {
+  background: white;
+  color: #087443;
+  font-weight: 600;
 }
 
 /* MOBILE - PORTRAIT */
@@ -58,18 +73,14 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 0;
+    gap: 6px;
     padding: 0 4px;
     box-sizing: border-box;
   }
 
-  .nav-links a {
-    font-size: 13px;
-    white-space: nowrap;
-  }
-
+  .nav-links a,
   .logout-btn {
-    font-size: 13px;
+    font-size: 12px;
     padding: 6px 8px;
     margin: 0;
     white-space: nowrap;
@@ -157,7 +168,7 @@
   text-align: center;
   padding: 40px 20px;
   box-sizing: border-box;
-  background: transparent !important; /* parent green gradient theriyum */
+  background: transparent !important;
   color: white;
 }
 
@@ -207,6 +218,11 @@
   margin-bottom: 10px;
 }
 
+.home-page .home-info {
+  background: transparent !important;
+  color: white !important;
+}
+
 /* MOBILE HOME PAGE */
 
 @media (max-width: 600px) {
@@ -218,10 +234,4 @@
   .home-info {
     padding: 30px 16px;
   }
-}
-
-
-.home-page .home-info {
-  background: transparent !important;
-  color: white !important;
 }
