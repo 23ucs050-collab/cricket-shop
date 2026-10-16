@@ -17,6 +17,27 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+
+    // ---------- Profile fields ----------
+    phone: {
+      type: String,
+      default: "",
+    },
+
+    address: {
+      type: String,
+      default: "",
+    },
+
+    city: {
+      type: String,
+      default: "",
+    },
+
+    pincode: {
+      type: String,
+      default: "",
+    },
   },
   {
     timestamps: true,

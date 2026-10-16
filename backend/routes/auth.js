@@ -1,6 +1,8 @@
 const express = require("express");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 const User = require("../models/User");
+const authMiddleware = require("../middleware/auth");
 
 const router = express.Router();
 
@@ -87,14 +89,68 @@ router.post("/login", async (req, res) => {
       });
     }
 
+    // Create login token (7 naal valid)
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+      expiresIn: "7d",
+    });
+
     res.status(200).json({
       message: "Login successful",
+      token,
       user: {
         id: user._id,
         name: user.name,
         email: user.email,
       },
     });
+  } catch (error) {
+    console.log(error);
+
+    res.status(500).json({
+      message: "Server error",
+    });
+  }
+});
+
+// ==================== GET PROFILE ====================
+router.get("/profile", authMiddleware, async (req, res) => {
+  try {
+    const user = await User.findById(req.userId).select("-password");
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res.json({ user });
+  } catch (error) {
+    console.log(error);
+
+    res.status(500).json({
+      message: "Server error",
+    });
+  }
+});
+
+// ==================== UPDATE PROFILE ====================
+router.put("/profile", authMiddleware, async (req, res) => {
+  try {
+    const { name, phone, address, city, pincode } = req.body;
+
+    if (!name || !name.trim()) {
+      return res.status(400).json({ message: "Name is required" });
+    }
+
+    const user = await User.findByIdAndUpdate(
+      req.userId,
+      { name: name.trim(), phone, address, city, pincode },
+      { new: true, runValidators: true }
+    ).select("-password");
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res.json({ message: "Profile updated", user });
   } catch (error) {
     console.log(error);
 
