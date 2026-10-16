@@ -6,6 +6,8 @@ function Navbar({ cartCount }) {
 
   const handleLogout = () => {
     localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("customerUser");
+    localStorage.removeItem("token");
     navigate("/login");
   };
 
@@ -26,6 +28,11 @@ function Navbar({ cartCount }) {
 
         <Link to="/cart">
           Cart 🛒 ({cartCount})
+        </Link>
+
+        {/* Profile */}
+        <Link to="/profile">
+          Profile 👤
         </Link>
 
         <Link to="/login">

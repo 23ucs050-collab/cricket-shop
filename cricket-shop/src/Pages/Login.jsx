@@ -50,6 +50,7 @@ function Login() {
 
       localStorage.setItem("isLoggedIn", "true");
       localStorage.setItem("customerUser", JSON.stringify(data.user));
+      localStorage.setItem("token", data.token);
 
       // alert-ku badhula animation start pannu
       setWelcomeName(data.user?.name || "Player");

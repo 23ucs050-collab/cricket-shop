@@ -17,6 +17,7 @@ import Products from "./Pages/Products";
 import ProductDetails from "./Pages/ProductDetails";
 import Cart from "./Pages/Cart";
 import Checkout from "./Pages/Checkout";
+import Profile from "./Pages/Profile";
 import ProtectedRoute from "./ProtectedRoute";
 
 function App() {
@@ -53,82 +54,92 @@ function App() {
 
         <Routes>
 
-  {/* Website starting point */}
-  <Route
-    path="/"
-    element={
-      localStorage.getItem("isLoggedIn") === "true"
-        ? <Navigate to="/home" replace />
-        : <Navigate to="/login" replace />
-    }
-  />
+          {/* Website starting point */}
+          <Route
+            path="/"
+            element={
+              localStorage.getItem("isLoggedIn") === "true"
+                ? <Navigate to="/home" replace />
+                : <Navigate to="/login" replace />
+            }
+          />
 
-  {/* Register */}
-  <Route
-    path="/register"
-    element={<Register />}
-  />
+          {/* Register */}
+          <Route
+            path="/register"
+            element={<Register />}
+          />
 
-  {/* Login */}
-  <Route
-    path="/login"
-    element={<Login />}
-  />
+          {/* Login */}
+          <Route
+            path="/login"
+            element={<Login />}
+          />
 
-  {/* Home - Login required */}
-  <Route
-    path="/home"
-    element={
-      <ProtectedRoute>
-        <Home />
-      </ProtectedRoute>
-    }
-  />
+          {/* Home - Login required */}
+          <Route
+            path="/home"
+            element={
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>
+            }
+          />
 
-  {/* Products - Login required */}
-  <Route
-    path="/products"
-    element={
-      <ProtectedRoute>
-        <Products addToCart={addToCart} />
-      </ProtectedRoute>
-    }
-  />
+          {/* Products - Login required */}
+          <Route
+            path="/products"
+            element={
+              <ProtectedRoute>
+                <Products addToCart={addToCart} />
+              </ProtectedRoute>
+            }
+          />
 
-  {/* Product Details - Login required */}
-  <Route
-    path="/product/:id"
-    element={
-      <ProtectedRoute>
-        <ProductDetails />
-      </ProtectedRoute>
-    }
-  />
+          {/* Product Details - Login required */}
+          <Route
+            path="/product/:id"
+            element={
+              <ProtectedRoute>
+                <ProductDetails />
+              </ProtectedRoute>
+            }
+          />
 
-  {/* Cart - Login required */}
-  <Route
-    path="/cart"
-    element={
-      <ProtectedRoute>
-        <Cart
-          cart={cart}
-          removeFromCart={removeFromCart}
-        />
-      </ProtectedRoute>
-    }
-  />
+          {/* Cart - Login required */}
+          <Route
+            path="/cart"
+            element={
+              <ProtectedRoute>
+                <Cart
+                  cart={cart}
+                  removeFromCart={removeFromCart}
+                />
+              </ProtectedRoute>
+            }
+          />
 
-  {/* Checkout - Login required */}
-  <Route
-    path="/checkout"
-    element={
-      <ProtectedRoute>
-        <Checkout />
-      </ProtectedRoute>
-    }
-  />
+          {/* Checkout - Login required */}
+          <Route
+            path="/checkout"
+            element={
+              <ProtectedRoute>
+                <Checkout />
+              </ProtectedRoute>
+            }
+          />
 
-</Routes>
+          {/* Profile - Login required */}
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute>
+                <Profile />
+              </ProtectedRoute>
+            }
+          />
+
+        </Routes>
 
       </main>
 
@@ -138,7 +149,5 @@ function App() {
 
   );
 }
-
-
 
 export default App;
