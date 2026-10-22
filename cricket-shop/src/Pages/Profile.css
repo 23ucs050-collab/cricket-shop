@@ -7,6 +7,34 @@
   background: #f4f4f4;
 }
 
+/* ---------- Toast message (3 sec-la maraiyum) ---------- */
+.profile-toast {
+  position: fixed;
+  top: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #16a34a;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 999px;
+  font-weight: 600;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  animation: toastIn 0.35s ease-out;
+}
+
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -20px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+/* ---------- Card ---------- */
 .profile-card {
   width: 100%;
   max-width: 460px;
@@ -40,6 +68,39 @@
   color: #6b7280;
 }
 
+/* ---------- View mode ---------- */
+.profile-details {
+  text-align: left;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.detail-label {
+  color: #6b7280;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.detail-value {
+  color: #111;
+  text-align: right;
+  white-space: pre-line;
+  word-break: break-word;
+}
+
+.detail-value em {
+  color: #9ca3af;
+  font-style: normal;
+}
+
+/* ---------- Edit mode ---------- */
 .profile-card form {
   text-align: left;
 }
@@ -53,54 +114,4 @@
 }
 
 .profile-card input,
-.profile-card textarea {
-  width: 100%;
-  padding: 11px 12px;
-  border: 2px solid #e5e7eb;
-  border-radius: 10px;
-  font-size: 15px;
-  font-family: inherit;
-  box-sizing: border-box;
-  outline: none;
-}
-
-.profile-card input:focus,
-.profile-card textarea:focus {
-  border-color: #16a34a;
-}
-
-.profile-card input:disabled {
-  background: #f3f4f6;
-  color: #6b7280;
-}
-
-.profile-row {
-  display: flex;
-  gap: 12px;
-}
-
-.profile-row > div {
-  flex: 1;
-}
-
-.profile-card button {
-  width: 100%;
-  margin-top: 20px;
-  padding: 13px;
-  background: #16a34a;
-  color: #fff;
-  border: none;
-  border-radius: 10px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.profile-card button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-.profile-message {
-  margin-top: 14px;
-  font-weight: 600;
-}
+.profile-card textarea 
