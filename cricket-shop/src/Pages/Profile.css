@@ -114,4 +114,84 @@
 }
 
 .profile-card input,
-.profile-card textarea 
+.profile-card textarea {
+  width: 100%;
+  padding: 11px 12px;
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: inherit;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.profile-card input:focus,
+.profile-card textarea:focus {
+  border-color: #16a34a;
+}
+
+.profile-card input:disabled {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+.profile-row {
+  display: flex;
+  gap: 12px;
+}
+
+.profile-row > div {
+  flex: 1;
+}
+
+/* ---------- Buttons ---------- */
+.profile-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.btn-primary,
+.btn-secondary {
+  flex: 1;
+  padding: 13px;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: #16a34a;
+  color: #fff;
+  border: none;
+}
+
+.btn-primary:hover {
+  background: #15803d;
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: #fff;
+  color: #374151;
+  border: 2px solid #e5e7eb;
+}
+
+.btn-secondary:hover {
+  background: #f3f4f6;
+}
+
+.edit-btn {
+  width: 100%;
+  margin-top: 22px;
+}
+
+.profile-error {
+  margin-top: 14px;
+  color: #dc2626;
+  font-weight: 600;
+}
