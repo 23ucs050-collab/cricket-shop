@@ -287,3 +287,51 @@
   overflow: hidden;
 }
 
+/* ================= OTP STEP ================= */
+.otp-hint {
+  margin: 6px 0 14px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.login-box input.otp-input {
+  text-align: center;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 10px;
+}
+
+.otp-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 14px;
+}
+
+.login-box button.link-btn {
+  width: auto;
+  margin-top: 0;
+  padding: 4px 2px;
+  background: none;
+  color: #ef4444;
+  font-size: 14px;
+  text-decoration: underline;
+  box-shadow: none;
+}
+
+.login-box button.link-btn:hover {
+  background: none;
+  transform: none;
+  box-shadow: none;
+}
+
+.login-box button.link-btn:disabled {
+  color: #9ca3af;
+  text-decoration: none;
+  cursor: not-allowed;
+}
+
+.login-box button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
