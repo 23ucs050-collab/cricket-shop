@@ -1,0 +1,19 @@
+const mongoose = require("mongoose");
+
+const otpSchema = new mongoose.Schema({
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+    unique: true,
+  },
+  otpHash: { type: String, required: true },
+  expiresAt: { type: Date, required: true },
+  attempts: { type: Number, default: 0 },
+  lastSentAt: { type: Date, default: Date.now },
+});
+
+// Expire aana OTP-a MongoDB thaane delete pannidum
+otpSchema.index({ expiresAt: 1 }, { expireAfterSeconds: 0 });
+
+module.exports = mongoose.model("Otp", otpSchema);
