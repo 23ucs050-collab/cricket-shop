@@ -1,0 +1,157 @@
+.home-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 16px 48px;
+  background: #f4f7f5;
+}
+
+/* Category row */
+.home-categories {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  background: #fff;
+  border-radius: 16px;
+  padding: 14px 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
+}
+
+.home-cat {
+  flex: 1;
+  min-width: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  color: #14532d;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 6px;
+  border-radius: 12px;
+  transition: background 0.2s;
+}
+
+.home-cat:hover {
+  background: #e8f3ec;
+}
+
+.home-cat-icon {
+  font-size: 28px;
+}
+
+/* Hero */
+.hero {
+  background: linear-gradient(135deg, #14532d, #16a34a);
+  border-radius: 20px;
+  padding: 48px 32px;
+  color: #fff;
+  margin-bottom: 28px;
+}
+
+.hero h1 {
+  font-size: 36px;
+  margin-bottom: 8px;
+}
+
+.hero p {
+  font-size: 18px;
+  margin-bottom: 20px;
+  opacity: 0.95;
+}
+
+.shop-now-btn {
+  display: inline-block;
+  background: #fff;
+  color: #14532d;
+  padding: 12px 28px;
+  border-radius: 12px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* Product sections */
+.home-section {
+  background: #fff;
+  border-radius: 16px;
+  padding: 18px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.home-section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.home-section-head h2 {
+  font-size: 22px;
+  color: #14532d;
+  margin: 0;
+}
+
+.view-all {
+  color: #16a34a;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.home-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+/* About */
+.home-info {
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.home-info h2 {
+  color: #14532d;
+  margin-bottom: 8px;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.about-card {
+  background: #f4f7f5;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.about-card h3 {
+  font-size: 16px;
+  margin-bottom: 6px;
+  color: #14532d;
+}
+
+.about-card p {
+  margin: 0;
+  color: #4b5563;
+  font-size: 14px;
+}
+
+@media (max-width: 600px) {
+  .hero {
+    padding: 32px 20px;
+  }
+  .hero h1 {
+    font-size: 26px;
+  }
+  .home-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+}
