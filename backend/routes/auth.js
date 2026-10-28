@@ -133,7 +133,7 @@ router.post("/login", async (req, res) => {
     } catch (mailError) {
       console.error(mailError);
       return res.status(500).json({
-        message: "OTP anuppa mudiyala. Konjam neram kazhichu try pannunga",
+        message: "Unable to send OTP. Please try again later.",
       });
     }
 
