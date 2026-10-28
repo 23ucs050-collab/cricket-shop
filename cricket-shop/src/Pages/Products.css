@@ -92,3 +92,31 @@
     gap: 12px;
   }
 }
+
+.products-layout {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.products-content {
+  flex: 1;
+  min-width: 0;
+}
+
+@media (max-width: 800px) {
+  .products-layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: static;
+  }
+
+  .sidebar-title {
+    display: none;
+  }
+}
