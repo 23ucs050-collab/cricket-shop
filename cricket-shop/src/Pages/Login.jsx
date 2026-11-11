@@ -98,7 +98,7 @@ function Login() {
     e.preventDefault();
 
     if (!/^\d{6}$/.test(otp)) {
-      alert("6 digit OTP enter pannunga");
+      alert("6 digit OTP enter");
       return;
     }
 
@@ -191,8 +191,7 @@ function Login() {
             <>
               <h2>Verify OTP</h2>
               <p className="otp-hint">
-                <b>{maskEmail(email)}</b>-ku 6 digit OTP anuppirukkom. 5
-                minutes-ku valid.
+                <b>{maskEmail(email)}</b>We've sent a 6-digit verification code to. This code is valid for 5 minutes.
               </p>
 
               <form onSubmit={verifyOtp}>

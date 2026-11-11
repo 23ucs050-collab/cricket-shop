@@ -335,3 +335,20 @@
   opacity: 0.6;
   cursor: not-allowed;
 }
+
+
+
+.otp-info {
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #6b7280;
+  margin: 8px 0 20px;
+}
+
+.otp-email {
+  display: inline-block;
+  color: #111827;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
