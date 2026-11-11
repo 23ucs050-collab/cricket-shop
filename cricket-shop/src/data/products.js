@@ -4,6 +4,7 @@ import glovesImage from "../assets/gloves.jpg";
 import helmetImage from "../assets/helmet.jpg";
 import padsImage from "../assets/pads.jpg";
 import shoesImage from "../assets/shoes.jpg";
+import bat2 from "../assets/bat2.jpg";
 
 const products = [
   {
@@ -58,7 +59,14 @@ const products = [
     price: 3200,
     image: shoesImage,
     description: "Comfortable cricket shoes."
-  }
+  },
+  {
+  id: 7,
+  name: "MRF Genius Bat",
+  category: "Bats",
+  price: 12500,
+  image: bat2,
+},
 ];
 
 export default products;
