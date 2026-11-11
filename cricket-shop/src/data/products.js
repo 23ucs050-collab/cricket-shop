@@ -60,13 +60,13 @@ const products = [
     image: shoesImage,
     description: "Comfortable cricket shoes."
   },
-  {
-  id: 7,
-  name: "MRF Genius Bat",
-  category: "Bats",
-  price: 12500,
-  image: bat2,
-},
+{
+    id: 7,
+    name: "MRF Genius Bat",
+    category: "Bats",
+    price: 12500,
+    image: "/images/bat2.jpg",
+  },
 ];
 
 export default products;
